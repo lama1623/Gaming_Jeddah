@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-bg: #050816;
+  --card-bg: rgba(13, 19, 48, 0.6);
+  --neon-blue: #5b5fff;
+  --neon-purple: #7b61ff;
+  --neon-pink: #ff4d6d;
+}
+
+body {
+  @apply bg-primary text-white overflow-x-hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(91, 95, 255, 0.8), 0 0 20px rgba(91, 95, 255, 0.4);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(91, 95, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 20px rgba(91, 95, 255, 0.15);
+}
+
+.neon-border-draw {
+  position: relative;
+}
+
+.neon-border-draw::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--neon-blue);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Equalizer Animation */
+.eq-bar {
+  @apply w-[2px] bg-neon-blue mx-[1px];
+  animation: eq-bounce 1s ease-in-out infinite;
+}
+
+@keyframes eq-bounce {
+  0%, 100% { height: 4px; }
+  50% { height: 12px; }
+}
+
+.eq-bar-1 { animation-delay: 0.1s; }
+.eq-bar-2 { animation-delay: 0.3s; }
+.eq-bar-3 { animation-delay: 0.2s; }
+
+/* Neon Pulse */
+.neon-pulse {
+  box-shadow: 0 0 10px var(--neon-blue);
+  animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+  0% { box-shadow: 0 0 5px rgba(91, 95, 255, 0.4); }
+  50% { box-shadow: 0 0 15px rgba(91, 95, 255, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(91, 95, 255, 0.4); }
+}
